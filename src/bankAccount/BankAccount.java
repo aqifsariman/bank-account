@@ -1,6 +1,7 @@
 package bankAccount;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BankAccount {
   private String name;
@@ -69,8 +70,8 @@ public class BankAccount {
     try{
       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
       LocalDateTime now = LocalDateTime.now();
-      setBalance(amount);
-      setTransactions("Depositted $%f at ");
+      setBalance(amount + getBalance());
+      setTransactions(String.format("Depositted $%f at ",amount));
     } catch (IllegalArgumentException e){
       System.err.println(e);
     }
