@@ -24,7 +24,7 @@ public class BankAccount {
   
 
   public String getName() {
-    return name;
+    return name.substring(0,1).toUpperCase() + name.substring(1);
   }
   public void setName(String name) {
     this.name = name;
@@ -68,10 +68,10 @@ public class BankAccount {
   
   public void deposit(float amount){
     try{
-      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");  
       LocalDateTime now = LocalDateTime.now();
       setBalance(amount + getBalance());
-      setTransactions(String.format("Depositted $%f at ",amount));
+      setTransactions(String.format("Depositted $%.2f at %s",amount, dtf.format(now)));
     } catch (IllegalArgumentException e){
       System.err.println(e);
     }
