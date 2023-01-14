@@ -2,6 +2,7 @@ package bankAccount;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class BankAccount {
   private String name;
@@ -27,15 +28,18 @@ public class BankAccount {
   }
 
   public void setName(String name) {
-    this.name = name;
+    System.out.println("Not allowed to change name once set.");
   }
 
   public String getAccountNum() {
+    Random rand = new Random();
+    int randomAccountNum = rand.nextInt(999999999);
+    this.accountNum = String.format("%6d", randomAccountNum);
     return accountNum;
   }
 
   public void setAccountNum(String accountNum) {
-    this.accountNum = accountNum;
+    System.out.println("Not allowed to change account number once set.");
   }
 
   public float getBalance() {
@@ -43,6 +47,7 @@ public class BankAccount {
   }
 
   public void setBalance(float balance) {
+    System.out.println();
     this.balance = balance;
   }
 
